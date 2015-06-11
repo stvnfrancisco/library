@@ -2,7 +2,7 @@
 
 <h3>Select all the books by this author:</h3>
 
-<% if @author.any?() %>
+<% if @books.any?() %>
   <form action="/authors/<%= @author.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
 

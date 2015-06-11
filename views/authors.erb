@@ -9,6 +9,10 @@
   <button type="submit">Add author</button>
 </form>
 
+<% if @authors.any?() %>
+<p>Click on an author to see info about them and to assign books:</p>
+
+
 <ul>
   <% @authors.each do |author| %>
     <li><a href="/authors/<%= author.id() %>"><%= author.name() %></a></li>
