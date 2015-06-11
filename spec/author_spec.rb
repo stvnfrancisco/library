@@ -13,4 +13,10 @@ describe(Author) do
       expect(author).to(be_an_instance_of(Author))
     end
   end
+
+  describe(".all") do
+    it("starts off with no books") do
+      expect(Author.all()).to(eq([]))
+    end
+  end
 end
