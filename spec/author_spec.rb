@@ -20,3 +20,29 @@ describe(Author) do
     end
   end
 end
+
+  describe(".find") do
+    it("returns a author by its ID number") do
+      test_author = Author.new({:name => "Jack Kerouac", :id => nil})
+      test_author.save()
+      test_author2 = Author.new({:name => "Charles Bukowski", :id => nil})
+      test_author2.save()
+      expect(Author.find(test_author2.id())).to(eq(test_author2))
+    end
+  end
+
+  describe("#save") do
+    it('saves an author to the array') do
+      test_author = Author.new({:name => "Jack Kerouac", :id => nil})
+      test_author.save()
+      expect(Author.all()).to(eq([test_author]))
+    end
+
+    describe("#==") do
+      it("is the same if it has the same name and id") do
+        author = Author.new({:name => "Charles Bukowski", :id => nil})
+        author2 = Author.new({:name => "Charles Bukowski", :id => nil})
+        expect(author).to(eq(author2))
+      end
+    end
+  end
