@@ -54,4 +54,15 @@ end
         expect(author.name()).to(eq("Jack Kerouac"))
       end
     end
+
+    describe("#delete") do
+      it("lets you delete an author from the database") do
+        author = Author.new({:name => "Jack Kerouac", :id => nil})
+        author.save()
+        author2 = Author.new({:name => "Charles Bukowski", :id => nil})
+        author2.save()
+        author.delete()
+        expect(Author.all()).to(eq([author2]))
+      end
+    end
   end
