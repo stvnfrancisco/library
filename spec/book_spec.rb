@@ -42,4 +42,15 @@ describe(Book) do
       expect(book.name()).to(eq("Born To Run"))
     end
   end
+
+  describe("#delete") do
+    it("lets you delete a book from the database") do
+      book = Book.new({:name => "Born To Run", :id => nil})
+      book.save()
+      book2 = Book.new({:name => "1984", :id => nil})
+      book2.save()
+      book.delete()
+      expect(Book.all()).to(eq([book2]))
+    end
+  end
 end
