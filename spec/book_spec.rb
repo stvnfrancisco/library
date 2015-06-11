@@ -33,4 +33,13 @@ describe(Book) do
       expect(book).to(eq(book2))
     end
   end
+
+  describe("#update") do
+    it("lets you update books in the database") do
+      book = Book.new({:name => "Born To Run", :id => nil})
+      book.save()
+      book.update({:name => "Born To Run"})
+      expect(book.name()).to(eq("Born To Run"))
+    end
+  end
 end
