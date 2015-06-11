@@ -53,4 +53,17 @@ describe(Book) do
       expect(Book.all()).to(eq([book2]))
     end
   end
+
+  describe('#authors') do
+    it('returns all the authors for a particular book') do
+      book = Book.new({:name => "1984", :id => nil})
+      book.save()
+      test_author = Author.new({:name => "Charles Bukowski", :id => nil})
+      test_author.save()
+      test_author2 = Author.new({:name => "Jack Kerouac", :id => nil})
+      test_author2.save()
+      book.update({:author_ids => [test_author.id(), test_author2.id()]})
+      expect(book.authors()).to(eq([test_author, test_author2]))
+    end
+  end
 end
