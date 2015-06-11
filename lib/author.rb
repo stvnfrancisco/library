@@ -31,4 +31,10 @@ class Author
   define_method(:==) do |another_author|
     self.name().==(another_author.name()).&(self.id().==(another_author.id()))
   end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE authors SET name = '#{@name}' WHERE id = #{@id};")
+  end
 end

@@ -45,4 +45,13 @@ end
         expect(author).to(eq(author2))
       end
     end
+
+    describe("#update") do
+      it("lets you update authors in the database") do
+        author = Author.new({:name => "Charles Bukowski", :id => nil})
+        author.save()
+        author.update({:name => "Jack Kerouac"})
+        expect(author.name()).to(eq("Jack Kerouac"))
+      end
+    end
   end
